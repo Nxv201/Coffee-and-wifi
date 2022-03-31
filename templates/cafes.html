@@ -1,0 +1,37 @@
+{% extends 'bootstrap/base.html' %}
+{{ blo }}
+{% block title %}Restaurants{% endblock %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <h1>All Cafes</h1>
+
+            <table class="table">
+                {% for cf in cafes %}
+                    <tr>
+                        <td scope="col">{{ cf[0] }}</td>
+                        {% if cf[1] == 'Location' %}
+                            <td scope="col">{{ cf[1] }}</td>
+                        {%else%}
+                            <td scope="col"><a href="{{ cf[1] }}">Map Links</a></td>
+                        {% endif %}
+                        <td scope="col">{{ cf[2] }}</td>
+                        <td scope="col">{{ cf[3] }}</td>
+                        <td scope="col">{{ cf[4] }}</td>
+                        <td scope="col">{{ cf[5] }}</td>
+                        <td scope="col">{{ cf[6] }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+            <p><a href="{{ url_for('home') }}">Return to index page</a></p>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
